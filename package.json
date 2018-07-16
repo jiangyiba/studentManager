@@ -1,0 +1,23 @@
+{
+  "name": "studentmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiangyiba/studentManager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jiangyiba/studentManager/issues"
+  },
+  "homepage": "https://github.com/jiangyiba/studentManager#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "svg-captcha": "^1.3.11"
+  }
+}
