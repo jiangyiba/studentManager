@@ -17,7 +17,7 @@
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 	  <![endif]-->
     <style>
-        .navbar-link .userout {
+        .navbar-default .navbar-link {
             color: #f00;
             font-size: 22px;
             font-weight: 700;
@@ -39,7 +39,7 @@
         
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <p class="navbar-text navbar-right">欢迎【jiang】登入
-                            <a href="#" class="navbar-link userout">登出</a>
+                            <a href="/logout" class="navbar-link userout">登出</a>
                         </p>
                     </div>
                 </div>
@@ -71,47 +71,47 @@
                         </ol>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="get">
                             <div class="form-group">
                                 <label for="username" class="col-sm-2 control-label">姓名</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="username" placeholder="请输入...">
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="请输入...">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="userage" class="col-sm-2 control-label">年龄</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="userage" placeholder="请输入...">
+                                    <input type="text" class="form-control" id="userage" name="userage" placeholder="请输入...">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="usersex" class="col-sm-2 control-label">性别</label>
+                                <label for="dender" class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="usersex" placeholder="请输入...">
+                                    <input type="text" class="form-control" id="dender" name="dender" placeholder="请输入...">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="usernum" class="col-sm-2 control-label">电话</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="usernum" placeholder="请输入...">
+                                    <input type="text" class="form-control" id="usernum" name="usernum" placeholder="请输入...">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="userhome" class="col-sm-2 control-label">地址</label>
+                                <label for="site" class="col-sm-2 control-label">地址</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="userhome" placeholder="请输入...">
+                                    <input type="text" class="form-control" id="site" name="site" placeholder="请输入...">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">简介</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" rows="6"></textarea>
+                                    <textarea class="form-control" rows="6" name="brief" placeholder="请输入简介..."></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Sign in</button>
+                                    <button type="submit" class="btn btn-default">提交</button>
                                 </div>
                             </div>
                         </form>
