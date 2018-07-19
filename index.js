@@ -4,19 +4,8 @@ let svgCaptcha = require('svg-captcha');
 let path = require('path');
 let session = require('express-session');
 let bodyParser = require('body-parser');
-//引入模块
-const MongoClient = require('mongodb').MongoClient;
- 
-// 数据库地址
-const url = 'mongodb://localhost:27017';
- 
-// 数据库名字
-const dbName = 'test';
- 
 
-
-
-
+let myT = require(path.join(__dirname,'./tools/myT.js'));
 let app = express();
 //设置静态资源托管
 app.use(express.static('static'));
@@ -98,40 +87,19 @@ app.post('/register',(req,res)=>{
     // 接收数据
     let username = req.body.username;
     let password = req.body.password;
-    // 对比数据
-    MongoClient.connect(url,{ useNewUrlParser: true },(err, client)=>{
-        if(err)console.log(err);
-        const db = client.db(dbName);
-        //新增数据-选择集合
-        const collection = db.collection('accountInfo');
-        // find数据
-        collection.find({username}).toArray(function (err, docs) {
-            console.log(docs)
-            if(docs.username) {
-                //如果有返回值说明用户已经存在,提示用户并且打回去
-                res.setHeader('content-type', 'text/html');
-                res.send('<script>alert("用户已存在,请重新注册!!!");window.location.href="/register"</script>');
-            }else{
-                //返回的值为空则表示没有这个用户--执行下一步新增这个用户
-                collection.insertMany([{
-                    username,
-                    password
-                }],(err, result)=>{
-                    if(err)console.log(err);
-                    //   跳转报错
-                    
-                });
+    //判断有没有值
+    myT.find('accountInfo',{username},(err,docs)=>{
+        console.log(docs);
+        // console.log(docs);
 
-            }
-        });
-
+        if(docs.length != 0){
+            myT.mess(res,'已被注册,请重新注册','/register');
+        }else{
+            myT.insert('accountInfo',{username,password},(err,result)=>{
+                myT.mess(res,'注册成功','/login');
+            })
+        }
     })
-        //有了打回去
-        // 没有则连接数据库--新增数据---提示成功,并返回登入页
-
-
-    //直接读取展示文件
-    res.sendFile(path.join(__dirname,'static/views/register.html'));
 })
 
 //开启
